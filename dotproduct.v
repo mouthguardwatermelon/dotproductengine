@@ -211,8 +211,8 @@ endmodule
 module multiplier(
     input                  reset,
     input                  clk,
-    input reg signed [7:0] a_lane,
-    input reg signed [7:0] b_lane,
+    input wire signed [7:0] a_lane,
+    input wire signed [7:0] b_lane,
     output reg signed [15:0] product
 
 );
