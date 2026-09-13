@@ -181,7 +181,7 @@ wire signed [15:0] product2;
 wire signed [15:0] product3;
 wire signed [15:0] product4;
 
-reg valid_delay
+reg valid_delay;
 
 multiplier mulitplier1(reset,clk,numA[31:24],numB[31:24],product1);
 multiplier mulitplier2(reset,clk,numA[23:16],numB[23:16],product2);
@@ -191,15 +191,15 @@ multiplier mulitplier4(reset,clk,numA[7:0],numB[7:0],product4);
 always @(posedge clk) begin
     if (reset) begin
         productALL <= 64'b0;
-        in_valid <= 1'b0;
         out_valid <= 1'b0;
+        valid_delay <= 1'b0;
 
     end
     else begin
         valid_delay <= in_valid;
         out_valid <= valid_delay;
         if (valid_delay) begin
-            productALL = product1+product2+product3+product4;
+            productALL <= product1+product2+product3+product4;
         end
     end
        
